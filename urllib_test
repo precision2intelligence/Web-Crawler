@@ -1,0 +1,35 @@
+import urllib.request#Python3中已经取消了urllib2
+import http.cookiejar
+
+print('方法一')
+
+url='http://www.baidu.com'
+
+response= urllib.request.urlopen(url)
+
+print(response.getcode())
+
+print(len(response.read()))
+
+print('方法二')
+
+request=urllib.request.Request(url)
+
+#request.data="a,1"##这里不清楚含义
+request.header="User-Agent,Mozillia/5.0"
+
+response1=urllib.request.urlopen(request)
+print(response1.getcode())
+print(len(response1.read()))##不知道为什么len不一样
+
+print('方法三')
+
+cj=http.cookiejar.CookieJar()
+
+opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+
+urllib.request.install_opener(opener)
+response2=urllib.request.urlopen(url)
+print(response2.getcode())
+print(cj)
+print(len(response2.read()))
