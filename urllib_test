@@ -1,5 +1,5 @@
 import urllib.request#Python3中已经取消了urllib2
-import http.cookiejar
+import http.cookiejar#只用在了创建容器？容器是什么？
 
 print('方法一')
 
@@ -18,18 +18,18 @@ request=urllib.request.Request(url)
 #request.data="a,1"##这里不清楚含义
 request.header="User-Agent,Mozillia/5.0"
 
-response1=urllib.request.urlopen(request)
+response1=urllib.request.urlopen(request)#这里不是直接打开网址
 print(response1.getcode())
 print(len(response1.read()))##不知道为什么len不一样
 
 print('方法三')
 
-cj=http.cookiejar.CookieJar()
+cj=http.cookiejar.CookieJar()#和request一样都用了大写为函数
 
 opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
 
 urllib.request.install_opener(opener)
-response2=urllib.request.urlopen(url)
+response2=urllib.request.urlopen(url)#这里又成了url？
 print(response2.getcode())
 print(cj)
 print(len(response2.read()))
