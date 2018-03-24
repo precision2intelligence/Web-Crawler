@@ -26,7 +26,7 @@ link_node1=soup.find('a',href="http://example.com/elsie")
 print(link_node1.name,link_node1['href'],link_node1.get_text())
 
 print('正则匹配')
-link_node2=soup.find('a',href=re.compile(r"cie"))#这里存疑
+link_node2=soup.find('a',href=re.compile(r"cie"))#这里存疑—————>其实是变量名打错了。。。。
 print(link_node2.name,link_node2['href'],link_node2.get_text())
 
 print('获取p段落文字')
