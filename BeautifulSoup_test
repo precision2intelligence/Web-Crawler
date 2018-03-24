@@ -13,23 +13,22 @@ html_doc = """
 and they lived at the bottom of a well.</p>
 
 <p class="story">...</p>
-"""
-print('bs4')
+"""#自动分行不加斜线
 
-soup=BeautifulSoup(html_doc,'html.parser',from_encoding='utf-8')
+soup=BeautifulSoup(html_doc,'html.parser',from_encoding='utf-8')#创建对象：HTML文档字符串，HTML文档解析器，HTML文档的编码 ！！！只是对象
 print('获取所有链接')
-links=soup.find_all('a')
+links=soup.find_all('a')#a和p什么区别  ！！！soup.表示对象下的函数
 for link in links:
-    print(link.name,link['href'],link.get_text())
+    print(link.name,link['href'],link.get_text())#无定义的都是函数，用点
     
 print('获取Elsied的链接')
 link_node1=soup.find('a',href="http://example.com/elsie")
 print(link_node1.name,link_node1['href'],link_node1.get_text())
 
 print('正则匹配')
-link_node2=soup.find('a',href=re.compile(r"sie"))#这里存疑
-print(link.name,link['href'],link.get_text())
+link_node2=soup.find('a',href=re.compile(r"cie"))#这里存疑
+print(link_node2.name,link_node2['href'],link_node2.get_text())
 
 print('获取p段落文字')
-p_node=soup.find('p',class_="title")
-print(p_node.name,p_node.get_text())
+p_node=soup.find('p',class_="story")
+print(p_node.name,p_node.class_,p_node.get_text())#似乎没有class_和href属性，对于p
